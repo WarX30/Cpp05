@@ -7,14 +7,14 @@ class Form
 {
 	private:
 		const std::string _name;
-		bool			  _isSigned;
 		const int		  _gradeToSign;
 		const int		  _gradeToExecute;
+		bool			  _isSigned;
 	
 	public:
 	// Constructor
 		Form();
-		Form(const std::string name, const int sign_lvl, const int execute_lvl);
+		Form(const std::string &name, int sign_grade, int execute_grade);
 		Form(const Form &other);
 
 	// Overload operator
@@ -25,9 +25,9 @@ class Form
 
 	//Getters
 		const std::string &getName(void) const;
-		const int	&getGradeToSign(void) const;
-		const bool	&getIsSigned(void) const;
-		const int	&getGradeToExecute(void) const;
+		int				  getGradeToSign(void) const;
+		int				  getGradeToExecute(void) const;
+		bool			  getIsSigned(void) const;
 	
 	// Method
 		void	beSigned(const Bureaucrat &b);

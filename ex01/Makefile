@@ -4,7 +4,8 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = src/main.cpp \
-      src/Bureaucrat.cpp
+      src/Bureaucrat.cpp \
+	  src/Form.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

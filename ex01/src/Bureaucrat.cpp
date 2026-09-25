@@ -1,4 +1,6 @@
 #include "../include/Bureaucrat.hpp"
+#include "../include/Form.hpp"
+#include <exception>
 
 Bureaucrat::Bureaucrat(): _name("Default"), _grade(150)
 {
@@ -79,6 +81,23 @@ std::ostream &operator<<(std::ostream &out, const Bureaucrat &other)
 		<< BOLD_ON CYAN << other.getGrade() << BOLD_OFF 
 		<< "." << std::endl;
 	return out;
+}
+
+void	Bureaucrat::signFrom(Form &f)
+{
+	try
+	{
+		f.beSigned(*this);
+		std::cout << BOLD_ON BLUE << this->getName() << BOLD_OFF
+				  << " signed " << BOLD_ON CYAN << f.getName() << BOLD_OFF
+				  << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << BOLD_ON BLUE << this->getName() << BOLD_OFF
+				  << " couldn't sign " << BOLD_ON CYAN << f.getName() << BOLD_OFF
+				  << " because " << e.what() << std::endl;
+	}
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()

@@ -25,23 +25,23 @@ int	main(void)
 		std::cout << bob << std::endl;
 		std::cout << taxForm << std::endl;
 
-		bob.signFrom(taxForm);
+		bob.signForm(taxForm);
 
 		std::cout << taxForm << std::endl;
 
 		bob.incrementGrade(49);
 		std::cout << bob << std::endl;
 		std::cout << form1 << std::endl;
-		bob.signFrom(form1);
+		bob.signForm(form1);
 		std::cout << form1 << std::endl;
 
 		bob.decrementGrade(149);
 		std::cout << bob << std::endl;
 		std::cout << form2 << std::endl;
-		bob.signFrom(form2);
+		bob.signForm(form2);
 		std::cout << form2 << std::endl;
 	}
-	catch (std::exception &e) {
+	catch (const std::exception &e) {
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
@@ -54,11 +54,11 @@ int	main(void)
 		std::cout << alice << std::endl;
 		std::cout << taxForm << std::endl;
 
-		alice.signFrom(taxForm);
+		alice.signForm(taxForm);
 
 		std::cout << taxForm << std::endl;
 	}
-	catch (std::exception &e) {
+	catch (const std::exception &e) {
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
@@ -68,7 +68,7 @@ int	main(void)
 		Form invalid("Invalid Form", 0, 25);
 		std::cout << invalid << std::endl;
 	}
-	catch (std::exception &e) {
+	catch (const std::exception &e) {
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
@@ -78,7 +78,7 @@ int	main(void)
 		Form invalid("Invalid Form", 151, 25);
 		std::cout << invalid << std::endl;
 	}
-	catch (std::exception &e) {
+	catch (const std::exception &e) {
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
@@ -88,7 +88,7 @@ int	main(void)
 		Form original("Original", 50, 25);
 		Bureaucrat bob("Bob", 25);
 
-		bob.signFrom(original);
+		bob.signForm(original);
 
 		Form copy(original);
 
@@ -98,7 +98,7 @@ int	main(void)
 		std::cout << "Copy: " << std::endl;
 		std::cout << copy << std::endl;
 	}
-	catch (std::exception &e) {
+	catch (const std::exception &e) {
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
@@ -109,7 +109,7 @@ int	main(void)
 		Form target("Target", 100, 75);
 		Bureaucrat bob("Bob", 25);
 
-		bob.signFrom(original);
+		bob.signForm(original);
 
 		std::cout << "Before assignment: " << std::endl;
 		std::cout << target << std::endl;
@@ -119,7 +119,7 @@ int	main(void)
 		std::cout << "After assignment: " << std::endl;
 		std::cout << target << std::endl;
 	}
-	catch (std::exception &e) {
+	catch (const std::exception &e) {
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
 	return (0);

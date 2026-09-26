@@ -41,7 +41,7 @@ const std::string &Bureaucrat::getName(void) const
 	return (this->_name);
 }
 
-unsigned int	Bureaucrat::getGrade(void) const
+int		Bureaucrat::getGrade(void) const
 {
 	return (this->_grade);
 }
@@ -83,7 +83,7 @@ std::ostream &operator<<(std::ostream &out, const Bureaucrat &other)
 	return out;
 }
 
-void	Bureaucrat::signFrom(Form &f)
+void	Bureaucrat::signForm(Form &f)
 {
 	try
 	{
@@ -92,7 +92,7 @@ void	Bureaucrat::signFrom(Form &f)
 				  << " signed " << BOLD_ON CYAN << f.getName() << BOLD_OFF
 				  << std::endl;
 	}
-	catch (std::exception &e)
+	catch (const std::exception &e)
 	{
 		std::cout << BOLD_ON BLUE << this->getName() << BOLD_OFF
 				  << " couldn't sign " << BOLD_ON CYAN << f.getName() << BOLD_OFF

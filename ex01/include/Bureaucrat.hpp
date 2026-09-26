@@ -39,13 +39,13 @@ class	Bureaucrat
 
 	// Getters
 		const std::string &getName(void) const;
-		unsigned int	getGrade(void) const;
+		int			getGrade(void) const;
 
 	// Methods
 		void	incrementGrade(int value);
 		void	decrementGrade(int value);
 		
-		void	signFrom(Form &f);
+		void	signForm(Form &f);
 	
 	// Exception
 		class	GradeTooHighException: public std::exception

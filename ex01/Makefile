@@ -3,27 +3,41 @@ NAME = form
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = src/main.cpp \
-      src/Bureaucrat.cpp \
-	  src/Form.cpp
-
-OBJ = $(SRC:.cpp=.o)
-
 INCLUDES = -I./include
+
+SRC_DIR = src
+
+SRCS = $(SRC_DIR)/main.cpp \
+	   $(SRC_DIR)/Bureaucrat.cpp \
+	   $(SRC_DIR)/Form.cpp \
+
+OBJS = $(SRCS:.cpp=.o)
+
+RM = rm -f
+
+GREEN = \033[1;32m
+YELLOW = \033[1;33m
+RED = \033[1;31m
+BLUE = \033[1;34m
+RESET = \033[0m
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJS)
+	@$(CXX) $(CXXFLAGS) $(INCLUDES) $(OBJS) -o $(NAME)
+	@echo "$(GREEN)$(NAME) compiled successfully!$(RESET)"
 
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
+$(SRC_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
+	@echo "$(BLUE)Compiling: $<$(RESET)"
 
 clean:
-	rm -f $(OBJ)
+	@$(RM) $(OBJS)
+	@echo "$(YELLOW)Object files removed.$(RESET)"
 
 fclean: clean
-	rm -f $(NAME)
+	@$(RM) $(NAME)
+	@echo "$(RED)Executable removed.$(RESET)"
 
 re: fclean all
 
